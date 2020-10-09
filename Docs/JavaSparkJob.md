@@ -1,5 +1,5 @@
 # Java Spark Job
-[grahamo-java-example README.md](../README.md)
+[grahamo-java-example README.md](../README.md) | [See code](../src/main/java/org/grahamoneil/java/example/SparkExampleJob.java) | [See unit tests](../src/test/java/org/grahamoneil/java/example/SparkExampleJobTest.java)
 ## Setup Spark On Windows
 1. Download latest Java SE Development Kit from https://www.oracle.com/ca-en/java/technologies/javase/javase-jdk8-downloads.html
 2. Download Spark 2.4.7 from https://spark.apache.org/downloads.html
@@ -21,3 +21,6 @@
 ![spark-version](spark-version.PNG)
 18. At a command prompt try spark-shell
 ![spark-shell](spark-shell.PNG)
+
+## IntelliJ Setup
+1. If you are usig IntelliJ as and IDE go into project structure -> modules -> dependencies and add C:\BigDataDev\spark\spark-2.4.7-bin-hadoop2.7\jars

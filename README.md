@@ -5,7 +5,7 @@ This project shows various example of using Java
  * A Spark job written using Java.
  * Shows various kinds of joins.
  
-[See ReadMe](Docs/JavaSparkJob.md) | See code | See unit tests
+[See ReadMe](Docs/JavaSparkJob.md) | [See code](src/main/java/org/grahamoneil/java/example/SparkExampleJob.java) | [See unit tests](src/test/java/org/grahamoneil/java/example/SparkExampleJobTest.java)
 
 ## Stack Example
  * The Stack class is designed to populate an ArrayList of Arrays.
