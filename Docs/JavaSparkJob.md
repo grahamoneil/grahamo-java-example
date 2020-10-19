@@ -48,3 +48,46 @@ dept_id | dept_name
 90 | Legal
 
 ### sparkExampleJobInnerJoin
+Runs the SparkExampleJob innerJoinDataFrames method and verifies the DataFrame is correct.
+
+The inner join is the default join in Spark SQL. It selects rows that have matching values in both relations.
+
+The DataFrame should equal the following:
+
+emp_id | name | emp_dept_id | dept_id | dept_name
+------ | ---- | ----------- | ------- | ---------
+1 | Graham | 10 | 10 | Engineering
+2 | Bill | 5 | 5 | HR
+3 | John | 10 | 10 | Engineering
+4 | Jane | 6 | 6 | Sales
+
+### sparkExampleJobLeftJoin
+Runs the SparkExampleJob leftJoinDataFrames method and verifies the DataFrame is correct.
+
+A left join returns all values from the left relation and the matched values from the right relation, or appends NULL if there is no match. It is also referred to as a left outer join.
+
+The DataFrame should equal the following:
+
+emp_id | name | emp_dept_id | dept_id | dept_name
+------ | ---- | ----------- | ------- | ---------
+1 | Graham | 10 | 10 | Engineering
+2 | Bill | 5 | 5 | HR
+3 | John | 10 | 10 | Engineering
+4 | Jane | 6 | 6 | Sales
+5 | John | 50 | null | null
+
+### sparkExampleJobRightJoin
+Runs the SparkExampleJob rightJoinDataFrames method and verifies the DataFrame is correct.
+
+A right join returns all values from the right relation and the matched values from the left relation, or appends NULL if there is no match. It is also referred to as a right outer join.
+
+The DataFrame should equal the following:
+
+emp_id | name | emp_dept_id | dept_id | dept_name
+------ | ---- | ----------- | ------- | ---------
+1 | Graham | 10 | 10 | Engineering
+2 | Bill | 5 | 5 | HR
+3 | John | 10 | 10 | Engineering
+4 | Jane | 6 | 6 | Sales
+null | null | null | 90 | Legal
+

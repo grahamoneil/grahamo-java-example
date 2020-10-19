@@ -14,7 +14,7 @@ import java.util.List;
 public class SparkExampleJob {
 
     public Dataset<Row> final_df = null;
-    public SparkSession spark = null;
+    public SparkSession spark;
 
     public SparkExampleJob() {
         this.spark = SparkSession.builder()
@@ -24,35 +24,33 @@ public class SparkExampleJob {
     }
 
     private Dataset<Row> getDepartmentDataFrame() {
-        List<Row> list = new ArrayList<Row>();
+        List<Row> list = new ArrayList<>();
         list.add(RowFactory.create(5, "HR"));
         list.add(RowFactory.create(6, "Sales"));
         list.add(RowFactory.create(10, "Engineering"));
         list.add(RowFactory.create(90, "Legal"));
 
-        List<StructField> listOfStructField = new ArrayList<StructField>();
+        List<StructField> listOfStructField = new ArrayList<>();
         listOfStructField.add(DataTypes.createStructField("dept_id", DataTypes.IntegerType, true));
         listOfStructField.add(DataTypes.createStructField("dept_name", DataTypes.StringType, true));
         StructType structType = DataTypes.createStructType(listOfStructField);
-        Dataset<Row> data = this.spark.createDataFrame(list, structType);
-        return data;
+        return this.spark.createDataFrame(list, structType);
     }
 
     private Dataset<Row> getEmployeeDataFrame() {
-        List<Row> list = new ArrayList<Row>();
+        List<Row> list = new ArrayList<>();
         list.add(RowFactory.create(1, "Graham", 10));
         list.add(RowFactory.create(2, "Bill", 5));
         list.add(RowFactory.create(3, "John", 10));
         list.add(RowFactory.create(4, "Jane", 6));
         list.add(RowFactory.create(5, "Joe", 50));
 
-        List<StructField> listOfStructField = new ArrayList<StructField>();
+        List<StructField> listOfStructField = new ArrayList<>();
         listOfStructField.add(DataTypes.createStructField("emp_id", DataTypes.IntegerType, true));
         listOfStructField.add(DataTypes.createStructField("name", DataTypes.StringType, true));
         listOfStructField.add(DataTypes.createStructField("emp_dept_id", DataTypes.IntegerType, true));
         StructType structType = DataTypes.createStructType(listOfStructField);
-        Dataset<Row> data = this.spark.createDataFrame(list, structType);
-        return data;
+        return this.spark.createDataFrame(list, structType);
     }
 
     public void innerJoinDataFrames() {
