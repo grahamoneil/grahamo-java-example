@@ -28,6 +28,7 @@ public class SparkExampleJob {
         list.add(RowFactory.create(5, "HR"));
         list.add(RowFactory.create(6, "Sales"));
         list.add(RowFactory.create(10, "Engineering"));
+        list.add(RowFactory.create(90, "Legal"));
 
         List<StructField> listOfStructField = new ArrayList<StructField>();
         listOfStructField.add(DataTypes.createStructField("dept_id", DataTypes.IntegerType, true));
@@ -43,6 +44,7 @@ public class SparkExampleJob {
         list.add(RowFactory.create(2, "Bill", 5));
         list.add(RowFactory.create(3, "John", 10));
         list.add(RowFactory.create(4, "Jane", 6));
+        list.add(RowFactory.create(5, "Joe", 50));
 
         List<StructField> listOfStructField = new ArrayList<StructField>();
         listOfStructField.add(DataTypes.createStructField("emp_id", DataTypes.IntegerType, true));
@@ -53,12 +55,21 @@ public class SparkExampleJob {
         return data;
     }
 
+    public void innerJoinDataFrames() {
+        Dataset<Row> emp_df = this.getEmployeeDataFrame();
+        Dataset<Row> dept_df = this.getDepartmentDataFrame();
+        this.final_df = emp_df.join(dept_df, emp_df.col("emp_dept_id").equalTo(dept_df.col("dept_id")));
+    }
+
     public void leftJoinDataFrames() {
         Dataset<Row> emp_df = this.getEmployeeDataFrame();
         Dataset<Row> dept_df = this.getDepartmentDataFrame();
-        //emp_df.show();
-        //dept_df.show();
-        this.final_df = emp_df.join(dept_df, emp_df.col("emp_dept_id").equalTo(dept_df.col("dept_id")));
-        //this.final_df.show();
+        this.final_df = emp_df.join(dept_df, emp_df.col("emp_dept_id").equalTo(dept_df.col("dept_id")), "left");
+    }
+
+    public void rightJoinDataFrames() {
+        Dataset<Row> emp_df = this.getEmployeeDataFrame();
+        Dataset<Row> dept_df = this.getDepartmentDataFrame();
+        this.final_df = emp_df.join(dept_df, emp_df.col("emp_dept_id").equalTo(dept_df.col("dept_id")), "right");
     }
 }

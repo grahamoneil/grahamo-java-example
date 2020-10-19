@@ -24,3 +24,27 @@
 
 ## IntelliJ Setup
 1. If you are usig IntelliJ as and IDE go into project structure -> modules -> dependencies and add C:\BigDataDev\spark\spark-2.4.7-bin-hadoop2.7\jars
+
+## Unit Tests
+The unit tests use the following DataFrames:
+
+**Employee DataFrame as the left DataFrame**
+
+emp_id | name | emp_dept_id
+------ | ---- | -----------
+1 | Graham | 10
+2 | Bill | 5
+3 | John | 10
+4 | Jane | 6
+6 | Joe | 50
+
+**Department DataFrame as the right DataFrame**
+
+dept_id | dept_name
+------ | ----
+5 | HR
+6 | Sales
+10 | Engineering
+90 | Legal
+
+### sparkExampleJobInnerJoin
